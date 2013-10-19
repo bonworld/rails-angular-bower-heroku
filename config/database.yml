@@ -16,7 +16,7 @@ test:
   port: 5432
   host: localhost
   database: postgres
-  password: root
+  password: 
 
 production:
   encoding: unicode
