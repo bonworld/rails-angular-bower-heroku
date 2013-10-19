@@ -43,3 +43,5 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+# Alternative multithreaded webserver
+gem 'puma'
