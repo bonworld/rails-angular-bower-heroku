@@ -1,0 +1,10 @@
+<div class="row">
+	<div class="span10">
+	  <h1 class="header">Postings</h1>
+	  <p ng-repeat="post in posts">
+	    <a href="#/posts/{{ post.id }}" title="{{ post.title }}">
+	      {{ post.title }}
+	    </a>
+	  </p>
+	</div>
+</div>
