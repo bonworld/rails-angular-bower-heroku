@@ -2,9 +2,9 @@
 %html{lang: "en", "ng-app" => "RabhApp"}
   %head
     %title Rails AngularJS Bower on Heroku 
-    = csrf_meta_tags
-    = javascript_include_tag :application
-    = stylesheet_link_tag :application
   %body
     %div.container
       = yield
+= csrf_meta_tags
+= javascript_include_tag :application
+= stylesheet_link_tag :application
