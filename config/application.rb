@@ -21,7 +21,7 @@ module RailsAngularBowerHeroku
     # config.i18n.default_locale = :de
 
     # include Bower components in compiled assets
-    config.assets.paths << Rails.root.join('app', 'assets', 'components')
+    config.assets.paths << Rails.root.join('app', 'assets', 'components', 'fonts')
 
     # We don't want the default of everything that isn't js or css, because it pulls too many things in
     config.assets.precompile.shift
