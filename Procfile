@@ -1,2 +1,2 @@
 # puma
-web: bundle exec puma -t 6:16 -b tcp://0.0.0.0:$PORT
+web: bundle exec puma -w 4 -t 16:16 -p $PORT -e production
