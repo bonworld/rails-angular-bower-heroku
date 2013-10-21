@@ -27,3 +27,5 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 # Alternative multithreaded webserver
 gem 'puma'
+# Required for font path of Bootstrap
+gem 'rack-rewrite'
