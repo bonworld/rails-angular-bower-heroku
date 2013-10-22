@@ -4,7 +4,8 @@ Sample application for using bower to manage JavaScript packages for Rails on He
 
 ## Build Status ##
 
-https://www.codeship.io/projects/a4bfc1d0-1d1e-0131-6161-2e26d21abb16/status
+[ ![Codeship Status for stiebitzhofer/rails-angular-bower-heroku](https://www.codeship.io/projects/a4bfc1d0-1d1e-0131-6161-2e26d21abb16/status?branch=master)](https://www.codeship.io/projects/8390)
+
 
 ## Resources ##
 
