@@ -51,12 +51,29 @@ bower install
 
 ```ruby
 // ./config/application.rb
+
+config.assets.precompile.shift
+
+# Add additional asset pathes
 config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
 config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'bootstrap', 'dist', 'fonts')
 config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
 # Precompile additional asset types
-config.assets.precompile += %w( .svg .eot .woff .ttf )
+config.assets.precompile.push(Proc.new do |path|
+  File.extname(path).in? [
+    '.html', '.erb', '.haml',                 # Templates
+    '.png',  '.gif', '.jpg', '.jpeg', '.svg', # Images
+    '.eot',  '.otf', '.svc', '.woff', '.ttf', # Fonts
+  ]
+end)
+```
+
+For the production environment enable asset compilation
+
+```ruby
+# config/environments/production.rb
+config.assets.compile = true
 ```
 
 #### Configure Heroku ####
