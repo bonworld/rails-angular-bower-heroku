@@ -4,7 +4,7 @@ ruby '2.0.0'
 group :development, :test  do
   gem 'pry'
   gem 'pry-debugger'
-  gem 'rspec'
+  gem 'rspec-rails'
 end
 
 group :doc do
