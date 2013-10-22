@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 ruby '2.0.0'
 
 group :development, :test  do
-  # Use pry for debugging
   gem 'pry'
   gem 'pry-debugger'
+  gem 'rspec'
 end
 
 group :doc do
