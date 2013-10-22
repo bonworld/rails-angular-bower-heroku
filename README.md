@@ -2,6 +2,10 @@
 
 Sample application for using bower to manage JavaScript packages for Rails on Heroku
 
+## Build Status ##
+
+https://www.codeship.io/projects/a4bfc1d0-1d1e-0131-6161-2e26d21abb16/status
+
 ## Resources ##
 
 [1] https://github.com/qnyp/heroku-buildpack-ruby-bower "Heroku Buildpack for Ruby and Bower"
