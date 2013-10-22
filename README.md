@@ -13,89 +13,89 @@ Feedback welcome!
 ## Basic Steps ##
 
 #### Installation Bower ####
-	
-	```bash
-    npm install bower
-    ```
+
+```bash
+npm install bower
+```
 
 #### Setup Bower ####
 
-	```js
-    // .bowerrc
-    {
-      "directory": "vendor/assets/components"
-    }
-    ```
+```js
+// .bowerrc
+{
+  "directory": "vendor/assets/components"
+}
+```
 
 #### Install Packages ####
 
-	```bash
-	bower install angular
-	bower install angular-resource
-	bower install bootstrap
-	```
+```bash
+bower install angular
+bower install angular-resource
+bower install bootstrap
+```	
 
-### Create bower.json ####
+#### Create bower.json ####
 
-	```bash
-	bower init
-	```
+```bash
+bower init
+```
 
-	The script will ask you some questions and using the existing packages to create the bower.json file. Alternatively the bower.json can be written manually and the packages installed by 
+The script will ask you some questions and using the existing packages to create the bower.json file. Alternatively the bower.json can be written manually and the packages installed by 
 
-	```bash
-	bower install
-	```
+```bash
+bower install
+```
 
 #### Configure Rails ####
 
-	```ruby
-	// ./config/application.rb
-	config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'bootstrap', 'dist', 'fonts')
-    config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
+```ruby
+// ./config/application.rb
+config.assets.paths << Rails.root.join('vendor', 'assets', 'components')
+config.assets.paths << Rails.root.join('vendor', 'assets', 'components', 'bootstrap', 'dist', 'fonts')
+config.assets.paths << Rails.root.join('vendor', 'assets', 'fonts')
 
-    # Precompile additional asset types
-    config.assets.precompile += %w( .svg .eot .woff .ttf )
-	```ruby
+# Precompile additional asset types
+config.assets.precompile += %w( .svg .eot .woff .ttf )
+```
 
 #### Configure Heroku ####
 
-	```bash
-    heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
-    ```
+```bash
+heroku config:set BUILDPACK_URL='git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'
+```
 
 #### Install on Heroku ####
 
-	```bash
-	git push git@heroku.com:rails-angular-bower-heroku.git master
-	```
+```bash
+git push git@heroku.com:rails-angular-bower-heroku.git master
+```
 
-	Heroku will now install all JavaScript packages via Bower and compile the assets so that JavaScript and stylesheets are minified.
+Heroku will now install all JavaScript packages via Bower and compile the assets so that JavaScript and stylesheets are minified.
 
 #### Compressing Ressources ####
 
-	Compression of JavaScript and Stylesheets is quickly added by adding the gem 'heroku_rails_deflate' to the Gemfile and installing it.
+Compression of JavaScript and Stylesheets is quickly added by adding the gem 'heroku_rails_deflate' to the Gemfile and installing it.
 
-	```ruby
-	// .Gemfil
-	group :production, :staging do
-	  gem 'heroku_rails_deflate'
-	  gem 'rails_12factor'
-	end
-	```ruby
+```ruby
+// .Gemfil
+group :production, :staging do
+  gem 'heroku_rails_deflate'
+  gem 'rails_12factor'
+end
+```	
 
 ## Issues with Bootstrap ##
 
 The Bower package for [Bootstrap] (http://getbootstrap.com) contains not only the dist folder but the complete website for whatever reason. Additionally it contains fonts used for the glyphicons. 
 
-	```ruby
-    // ./config/initializers/rack_rewrite.rb
-	RailsAngularBowerHeroku::Application.config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
-	  rewrite %r{/fonts/(.*)}, '/assets/bootstrap/fonts/$1'
-	  rewrite %r{/font/(.*)}, '/assets/bootstrap/font/$1'
-	end
-	```
+```ruby
+// ./config/initializers/rack_rewrite.rb
+RailsAngularBowerHeroku::Application.config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+  rewrite %r{/fonts/(.*)}, '/assets/bootstrap/fonts/$1'
+  rewrite %r{/font/(.*)}, '/assets/bootstrap/font/$1'
+end
+```
 
 ## Continous Integration and Deployment ##
 
@@ -103,19 +103,24 @@ Finally I configured an application on [Codeship.io] to build the application, e
 
 #### Setup commands ####
 
-    rvm use 2.0.0
-    bundle install
-    export RAILS_ENV=test
-    bundle exec rake db:schema:load
-    npm install bower
-    bower install
+```bash
+rvm use 2.0.0
+bundle install
+export RAILS_ENV=test
+bundle exec rake db:schema:load
+npm install bower
+bower install
+```
 
 Important is only that Bower had to be installed via npm.
 
 #### Test commands ####
 
-    bundle exec rspec
+```bash
+bundle exec rspec
+```
 
+*TBC*
 
 ## Build Status ##
 
