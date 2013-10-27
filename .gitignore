@@ -17,4 +17,5 @@ rerun.txt
 pickle-email-*.html
 .project
 /vendor/*
+/node_modules/*
 
