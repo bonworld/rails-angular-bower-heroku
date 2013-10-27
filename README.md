@@ -1,12 +1,13 @@
 # rails-angular-bower-heroku #
 
-Sample application for using bower to manage JavaScript packages for Rails on Heroku
+Sample application for using Bower to manage JavaScript packages for Rails on Heroku.
 
 ## Objective ##
 
 My objective for this project was create a boilerplate template for projects with [Rails 4.0] (http://rubyonrails.org), [AngularJS] (https://angularjs.org) and [Bootstrap] (https://getbootstrap.com) to be deployed on [Heroku] (https://www.heroku.com) with optimized package management for client JavaScript and stylesheets via [Bower] (https://www.bower.io).
 
-Additionally I added tests for Rails and AngularJs and setup a continous delivery environment on [Codeship.io] (https://codeship.io).
+In addtion I added some rspec tests for Rails and a continous delivery environment on [Codeship.io] (https://codeship.io).
+Test for AngularJs come next.
 
 Feedback welcome!
 
@@ -104,7 +105,7 @@ end
 
 ## Issues with Bootstrap ##
 
-The Bower package for [Bootstrap] (http://getbootstrap.com) contains not only the dist folder but the complete website for whatever reason. Additionally it contains fonts used for the glyphicons. 
+The Bower package for [Bootstrap] (http://getbootstrap.com) contains not only the dist folder but the complete website for whatever reason. Additionally it contains fonts used for the glyphicons. The assets compilation creates a wrong path for the fonts which can be rewritten. Special thanks for the hint to [Matt Garrison](https://github.com/mattsgarrison).
 
 ```ruby
 // ./config/initializers/rack_rewrite.rb
@@ -116,7 +117,7 @@ end
 
 ## Continous Integration and Deployment ##
 
-Finally I configured an application on [Codeship.io] to build the application, execute all tests and if tests succeed to deploy it automatically on [http://rails-angular-bower-heroku.herokuapp.com] ([http://rails-angular-bower-heroku.herokuapp.com).
+Finally I configured an application on [Codeship.io] (http://www.codeship.io) to build the application, execute all tests and if tests succeed to deploy it automatically on [http://rails-angular-bower-heroku.herokuapp.com] ([http://rails-angular-bower-heroku.herokuapp.com).
 
 #### Setup commands ####
 
