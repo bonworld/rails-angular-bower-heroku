@@ -1,7 +1,7 @@
 'use strict';
-
+/*
 describe('Post Model Test', function(){
-	before(angular.module('RabhApp.PostModel'));
+/*	before(angular.module('RabhApp.PostModel'));
 	
     describe('when I call myService.one', function(){
         it('returns 1', function(){
@@ -11,4 +11,4 @@ describe('Post Model Test', function(){
         	}
         )}
 	)}
-);
+);*/
