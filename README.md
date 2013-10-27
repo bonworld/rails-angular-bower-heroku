@@ -4,10 +4,9 @@ Sample application for using Bower to manage JavaScript packages for Rails on He
 
 ## Objective ##
 
-My objective for this project was create a boilerplate template for projects with [Rails 4.0] (http://rubyonrails.org), [AngularJS] (https://angularjs.org) and [Bootstrap] (https://getbootstrap.com) to be deployed on [Heroku] (https://www.heroku.com) with optimized package management for client JavaScript and stylesheets via [Bower] (https://www.bower.io).
+My objective for this project was to create a boilerplate template for projects with [Rails 4.0] (http://rubyonrails.org), [AngularJS] (https://angularjs.org) and [Bootstrap] (https://getbootstrap.com) to be deployed on [Heroku] (https://www.heroku.com) with optimized package management for client JavaScript and stylesheets via [Bower] (https://www.bower.io).
 
-In addtion I added some rspec tests for Rails and a continous delivery environment on [Codeship.io] (https://codeship.io).
-Test for AngularJs come next.
+In addtion I added some tests for Rails and AngularJS and a continous delivery environment on [Codeship.io] (https://codeship.io).
 
 Feedback welcome!
 
@@ -248,9 +247,13 @@ karma start --single-run
 ## Resources and References ##
 
 [Heroku Buildpack for Ruby and Bower] (https://github.com/qnyp/heroku-buildpack-ruby-bower)
+
 [Gist by Aidan Feldman describing the basic steps] (https://gist.github.com/afeld/5704079)
+
 [Matt Garrison on Bower and Rails 4] (http://www.iconoclastlabs.com/blog/bower-and-rails-4)
+
 [http://rails-angular-bower-heroku.herokuapp.com] (http://rails-angular-bower-heroku.herokuapp.com)
+
 [Bootstrapping an AngularJS app in Rails 4.0] (http://asanderson.org/posts/2013/06/03/bootstrapping-angular-rails-part-1.html) is an excellent tutorial explaining in detail what I have done in this project.
 
 ## TODOs ##
