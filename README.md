@@ -119,6 +119,25 @@ end
 
 Finally I configured an application on [Codeship.io] (http://www.codeship.io) to build the application, execute all tests and if tests succeed to deploy it automatically on [http://rails-angular-bower-heroku.herokuapp.com] ([http://rails-angular-bower-heroku.herokuapp.com).
 
+#### Node package installation ####
+
+To automate the installation of Bower and all other components a package.json is required:
+
+```js
+// .package.json
+{
+  "name": "rails-angular-bower-heroku",
+  "version": "0.0.0",
+  "devDependencies": {
+    "bower": "~1.2.6",
+    "karma": "~0.10.4",
+    "karma-jasmine": "~0.1.3",
+    "karma-chrome-launcher": "~0.1.0",
+    "karma-phantomjs-launcher":"~0.1.0"
+  }
+}
+```
+
 #### Setup commands ####
 
 ```bash
@@ -126,19 +145,89 @@ rvm use 2.0.0
 bundle install
 export RAILS_ENV=test
 bundle exec rake db:schema:load
-npm install bower
+npm install 
 bower install
 ```
 
-Important is only that Bower had to be installed via npm.
+#### Karma configuration ####
+
+With karma init a file can be generated. The important section if files in which all JavaScript in the correct order has to loaded. The JavaScript libraries of Angular are loaded from vendor/assets/components, the application files from app/assets and the tests from spec.
+
+```js
+//. karma.conf.js
+// Karma configuration
+// Generated on Sun Oct 27 2013 20:48:21 GMT+0100 (CET)
+
+module.exports = function(config) {
+  config.set({
+
+    // base path, that will be used to resolve files and exclude
+    basePath: '',
+
+    // frameworks to use
+    frameworks: ['jasmine'],
+
+    // list of files / patterns to load in the browser
+    files: [
+      'vendor/assets/components/angular/angular.js',
+      'vendor/assets/components/angular-resource/angular-resource.js', 
+      'app/assets/javascripts/application.js', 
+      'app/assets/javascripts/app.js', 
+      'app/assets/javascripts/**/*.js',
+      'spec/angular/*_spec.js'   
+    ],
+
+    // list of files to exclude
+    exclude: [
+      
+    ],
+
+    // test results reporter to use
+    // possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'
+    reporters: ['progress'],
+
+    // web server port
+    port: 9876,
+
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
+
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
+
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
+
+    // Start these browsers, currently available:
+    // - Chrome
+    // - ChromeCanary
+    // - Firefox
+    // - Opera (has to be installed with `npm install karma-opera-launcher`)
+    // - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)
+    // - PhantomJS
+    // - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)
+    // browsers: ['Chrome', 'PhantomJS'],
+    browsers: ['PhantomJS'],
+
+    // If browser does not capture in given timeout [ms], kill it
+    captureTimeout: 60000,
+
+    // Continuous Integration mode
+    // if true, it capture browsers, run tests and exit
+    singleRun: false
+  });
+};
+```
 
 #### Test commands ####
 
+The test commands for Codeship:
+
 ```bash
 bundle exec rspec
+karma start --single-run
 ```
-
-*TBC*
 
 ## Build Status ##
 
@@ -156,5 +245,8 @@ bundle exec rspec
 [http://rails-angular-bower-heroku.herokuapp.com] (http://rails-angular-bower-heroku.herokuapp.com)
 
 [Bootstrapping an AngularJS app in Rails 4.0] (http://asanderson.org/posts/2013/06/03/bootstrapping-angular-rails-part-1.html) is an excellent tutorial explaining in detail what I have done in this project.
+
+## TODOs ##
+Write some more useful tests.
 
 
