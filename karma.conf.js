@@ -14,11 +14,12 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      './vendor/assets/components/angular/angular.js',
-      './vendor/assets/components/angular-resource/angular-resource.js',
-      './app/assets/javascripts/application.js',
-      './app/assets/javascripts/app.js',
-      './app/assets/javascripts/**/*.js'      
+      'vendor/assets/components/angular/angular.js',
+      'vendor/assets/components/angular-resource/angular-resource.js', 
+      'app/assets/javascripts/application.js', 
+      'app/assets/javascripts/app.js', 
+      'app/assets/javascripts/**/*.js',
+      'spec/angular/*_spec.js'   
     ],
 
 
