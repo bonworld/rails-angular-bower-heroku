@@ -248,13 +248,9 @@ karma start --single-run
 ## Resources and References ##
 
 [Heroku Buildpack for Ruby and Bower] (https://github.com/qnyp/heroku-buildpack-ruby-bower)
-
 [Gist by Aidan Feldman describing the basic steps] (https://gist.github.com/afeld/5704079)
-
 [Matt Garrison on Bower and Rails 4] (http://www.iconoclastlabs.com/blog/bower-and-rails-4)
-
 [http://rails-angular-bower-heroku.herokuapp.com] (http://rails-angular-bower-heroku.herokuapp.com)
-
 [Bootstrapping an AngularJS app in Rails 4.0] (http://asanderson.org/posts/2013/06/03/bootstrapping-angular-rails-part-1.html) is an excellent tutorial explaining in detail what I have done in this project.
 
 ## TODOs ##
