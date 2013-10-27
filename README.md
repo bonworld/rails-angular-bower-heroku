@@ -138,14 +138,10 @@ To automate the installation of Bower and all other components a package.json is
 }
 ```
 
-#### Setup commands ####
+Install everything now with 
 
 ```bash
-rvm use 2.0.0
-bundle install
-export RAILS_ENV=test
-bundle exec rake db:schema:load
-npm install 
+npm install
 bower install
 ```
 
@@ -218,6 +214,21 @@ module.exports = function(config) {
     singleRun: false
   });
 };
+```
+
+### Codeship.io ###
+
+To build and test the application the settings for the following sections have to be adapted:
+
+#### Setup commands ####
+
+```bash
+rvm use 2.0.0
+bundle install
+export RAILS_ENV=test
+bundle exec rake db:schema:load
+npm install 
+bower install
 ```
 
 #### Test commands ####
