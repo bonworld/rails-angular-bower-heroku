@@ -1,0 +1,305 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>rails-angular-bower-heroku by stiebitzhofer</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>rails-angular-bower-heroku</h1>
+        <p>Sample application for using bower to manage JavaScript packages for Rails on Heroku</p>
+
+        <p class="view"><a href="https://github.com/stiebitzhofer/rails-angular-bower-heroku">View the Project on GitHub <small>stiebitzhofer/rails-angular-bower-heroku</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/stiebitzhofer/rails-angular-bower-heroku/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/stiebitzhofer/rails-angular-bower-heroku/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/stiebitzhofer/rails-angular-bower-heroku">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="rails-angular-bower-heroku" class="anchor" href="#rails-angular-bower-heroku"><span class="octicon octicon-link"></span></a>rails-angular-bower-heroku</h1>
+
+<p>Sample application for using Bower to manage JavaScript packages for Rails on Heroku.</p>
+
+<h2>
+<a name="objective" class="anchor" href="#objective"><span class="octicon octicon-link"></span></a>Objective</h2>
+
+<p>My objective for this project was to create a boilerplate template for projects with <a href="http://rubyonrails.org">Rails 4.0</a>, <a href="https://angularjs.org">AngularJS</a> and <a href="https://getbootstrap.com">Bootstrap</a> to be deployed on <a href="https://www.heroku.com">Heroku</a> with optimized package management for client JavaScript and stylesheets via <a href="https://www.bower.io">Bower</a>.</p>
+
+<p>In addtion I added some tests for Rails and AngularJS and a continous delivery environment on <a href="https://codeship.io">Codeship.io</a>.</p>
+
+<p>Feedback welcome!</p>
+
+<h2>
+<a name="basic-steps" class="anchor" href="#basic-steps"><span class="octicon octicon-link"></span></a>Basic Steps</h2>
+
+<h4>
+<a name="installation-bower" class="anchor" href="#installation-bower"><span class="octicon octicon-link"></span></a>Installation Bower</h4>
+
+<div class="highlight highlight-bash"><pre>npm install bower
+</pre></div>
+
+<h4>
+<a name="setup-bower" class="anchor" href="#setup-bower"><span class="octicon octicon-link"></span></a>Setup Bower</h4>
+
+<div class="highlight highlight-js"><pre><span class="c1">// .bowerrc</span>
+<span class="p">{</span>
+  <span class="s2">"directory"</span><span class="o">:</span> <span class="s2">"vendor/assets/components"</span>
+<span class="p">}</span>
+</pre></div>
+
+<h4>
+<a name="install-packages" class="anchor" href="#install-packages"><span class="octicon octicon-link"></span></a>Install Packages</h4>
+
+<div class="highlight highlight-bash"><pre>bower install angular
+bower install angular-resource
+bower install bootstrap
+</pre></div>
+
+<h4>
+<a name="create-bowerjson" class="anchor" href="#create-bowerjson"><span class="octicon octicon-link"></span></a>Create bower.json</h4>
+
+<div class="highlight highlight-bash"><pre>bower init
+</pre></div>
+
+<p>The script will ask you some questions and using the existing packages to create the bower.json file. Alternatively the bower.json can be written manually and the packages installed by </p>
+
+<div class="highlight highlight-bash"><pre>bower install
+</pre></div>
+
+<h4>
+<a name="configure-rails" class="anchor" href="#configure-rails"><span class="octicon octicon-link"></span></a>Configure Rails</h4>
+
+<div class="highlight highlight-ruby"><pre><span class="sr">//</span> <span class="o">.</span><span class="n">/config</span><span class="o">/</span><span class="n">application</span><span class="o">.</span><span class="n">rb</span>
+
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">precompile</span><span class="o">.</span><span class="n">shift</span>
+
+<span class="c1"># Add additional asset pathes</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'assets'</span><span class="p">,</span> <span class="s1">'components'</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'assets'</span><span class="p">,</span> <span class="s1">'components'</span><span class="p">,</span> <span class="s1">'bootstrap'</span><span class="p">,</span> <span class="s1">'dist'</span><span class="p">,</span> <span class="s1">'fonts'</span><span class="p">)</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">paths</span> <span class="o">&lt;&lt;</span> <span class="no">Rails</span><span class="o">.</span><span class="n">root</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">'vendor'</span><span class="p">,</span> <span class="s1">'assets'</span><span class="p">,</span> <span class="s1">'fonts'</span><span class="p">)</span>
+
+<span class="c1"># Precompile additional asset types</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">precompile</span><span class="o">.</span><span class="n">push</span><span class="p">(</span><span class="no">Proc</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">path</span><span class="o">|</span>
+  <span class="no">File</span><span class="o">.</span><span class="n">extname</span><span class="p">(</span><span class="n">path</span><span class="p">)</span><span class="o">.</span><span class="n">in?</span> <span class="o">[</span>
+    <span class="s1">'.html'</span><span class="p">,</span> <span class="s1">'.erb'</span><span class="p">,</span> <span class="s1">'.haml'</span><span class="p">,</span>                 <span class="c1"># Templates</span>
+    <span class="s1">'.png'</span><span class="p">,</span>  <span class="s1">'.gif'</span><span class="p">,</span> <span class="s1">'.jpg'</span><span class="p">,</span> <span class="s1">'.jpeg'</span><span class="p">,</span> <span class="s1">'.svg'</span><span class="p">,</span> <span class="c1"># Images</span>
+    <span class="s1">'.eot'</span><span class="p">,</span>  <span class="s1">'.otf'</span><span class="p">,</span> <span class="s1">'.svc'</span><span class="p">,</span> <span class="s1">'.woff'</span><span class="p">,</span> <span class="s1">'.ttf'</span><span class="p">,</span> <span class="c1"># Fonts</span>
+  <span class="o">]</span>
+<span class="k">end</span><span class="p">)</span>
+</pre></div>
+
+<p>For the production environment enable asset compilation</p>
+
+<div class="highlight highlight-ruby"><pre><span class="c1"># config/environments/production.rb</span>
+<span class="n">config</span><span class="o">.</span><span class="n">assets</span><span class="o">.</span><span class="n">compile</span> <span class="o">=</span> <span class="kp">true</span>
+</pre></div>
+
+<h4>
+<a name="configure-heroku" class="anchor" href="#configure-heroku"><span class="octicon octicon-link"></span></a>Configure Heroku</h4>
+
+<div class="highlight highlight-bash"><pre>heroku config:set <span class="nv">BUILDPACK_URL</span><span class="o">=</span><span class="s1">'git://github.com/qnyp/heroku-buildpack-ruby-bower.git#run-bower'</span>
+</pre></div>
+
+<h4>
+<a name="install-on-heroku" class="anchor" href="#install-on-heroku"><span class="octicon octicon-link"></span></a>Install on Heroku</h4>
+
+<div class="highlight highlight-bash"><pre>git push git@heroku.com:rails-angular-bower-heroku.git master
+</pre></div>
+
+<p>Heroku will now install all JavaScript packages via Bower and compile the assets so that JavaScript and stylesheets are minified.</p>
+
+<h4>
+<a name="compressing-ressources" class="anchor" href="#compressing-ressources"><span class="octicon octicon-link"></span></a>Compressing Ressources</h4>
+
+<p>Compression of JavaScript and Stylesheets is quickly added by adding the gem 'heroku_rails_deflate' to the Gemfile and installing it.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="sr">//</span> <span class="o">.</span><span class="n">Gemfil</span>
+<span class="n">group</span> <span class="ss">:production</span><span class="p">,</span> <span class="ss">:staging</span> <span class="k">do</span>
+  <span class="n">gem</span> <span class="s1">'heroku_rails_deflate'</span>
+  <span class="n">gem</span> <span class="s1">'rails_12factor'</span>
+<span class="k">end</span>
+</pre></div>
+
+<h2>
+<a name="issues-with-bootstrap" class="anchor" href="#issues-with-bootstrap"><span class="octicon octicon-link"></span></a>Issues with Bootstrap</h2>
+
+<p>The Bower package for <a href="http://getbootstrap.com">Bootstrap</a> contains not only the dist folder but the complete website for whatever reason. Additionally it contains fonts used for the glyphicons. The assets compilation creates a wrong path for the fonts which can be rewritten. Special thanks for the hint to <a href="https://github.com/mattsgarrison">Matt Garrison</a>.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="sr">//</span> <span class="o">.</span><span class="n">/config</span><span class="o">/</span><span class="n">initializers</span><span class="o">/</span><span class="n">rack_rewrite</span><span class="o">.</span><span class="n">rb</span>
+<span class="ss">RailsAngularBowerHeroku</span><span class="p">:</span><span class="ss">:Application</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">middleware</span><span class="o">.</span><span class="n">insert_before</span><span class="p">(</span><span class="ss">Rack</span><span class="p">:</span><span class="ss">:Runtime</span><span class="p">,</span> <span class="ss">Rack</span><span class="p">:</span><span class="ss">:Rewrite</span><span class="p">)</span> <span class="k">do</span>
+  <span class="n">rewrite</span> <span class="sr">%r{/fonts/(.*)}</span><span class="p">,</span> <span class="s1">'/assets/bootstrap/fonts/$1'</span>
+  <span class="n">rewrite</span> <span class="sr">%r{/font/(.*)}</span><span class="p">,</span> <span class="s1">'/assets/bootstrap/font/$1'</span>
+<span class="k">end</span>
+</pre></div>
+
+<h2>
+<a name="continous-integration-and-deployment" class="anchor" href="#continous-integration-and-deployment"><span class="octicon octicon-link"></span></a>Continous Integration and Deployment</h2>
+
+<p>Finally I configured an application on <a href="http://www.codeship.io">Codeship.io</a> to build the application, execute all tests and if tests succeed to deploy it automatically on <a>http://rails-angular-bower-heroku.herokuapp.com</a>.</p>
+
+<h4>
+<a name="node-package-installation" class="anchor" href="#node-package-installation"><span class="octicon octicon-link"></span></a>Node package installation</h4>
+
+<p>To automate the installation of Bower and all other components a package.json is required:</p>
+
+<div class="highlight highlight-js"><pre><span class="c1">// .package.json</span>
+<span class="p">{</span>
+  <span class="s2">"name"</span><span class="o">:</span> <span class="s2">"rails-angular-bower-heroku"</span><span class="p">,</span>
+  <span class="s2">"version"</span><span class="o">:</span> <span class="s2">"0.0.0"</span><span class="p">,</span>
+  <span class="s2">"devDependencies"</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">"bower"</span><span class="o">:</span> <span class="s2">"~1.2.6"</span><span class="p">,</span>
+    <span class="s2">"karma"</span><span class="o">:</span> <span class="s2">"~0.10.4"</span><span class="p">,</span>
+    <span class="s2">"karma-jasmine"</span><span class="o">:</span> <span class="s2">"~0.1.3"</span><span class="p">,</span>
+    <span class="s2">"karma-chrome-launcher"</span><span class="o">:</span> <span class="s2">"~0.1.0"</span><span class="p">,</span>
+    <span class="s2">"karma-phantomjs-launcher"</span><span class="o">:</span><span class="s2">"~0.1.0"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Install everything now with </p>
+
+<div class="highlight highlight-bash"><pre>npm install
+bower install
+</pre></div>
+
+<h4>
+<a name="karma-configuration" class="anchor" href="#karma-configuration"><span class="octicon octicon-link"></span></a>Karma configuration</h4>
+
+<p>With karma init a file can be generated. The important section if files in which all JavaScript in the correct order has to loaded. The JavaScript libraries of Angular are loaded from vendor/assets/components, the application files from app/assets and the tests from spec.</p>
+
+<div class="highlight highlight-js"><pre><span class="c1">//. karma.conf.js</span>
+<span class="c1">// Karma configuration</span>
+<span class="c1">// Generated on Sun Oct 27 2013 20:48:21 GMT+0100 (CET)</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">config</span><span class="p">.</span><span class="nx">set</span><span class="p">({</span>
+
+    <span class="c1">// base path, that will be used to resolve files and exclude</span>
+    <span class="nx">basePath</span><span class="o">:</span> <span class="s1">''</span><span class="p">,</span>
+
+    <span class="c1">// frameworks to use</span>
+    <span class="nx">frameworks</span><span class="o">:</span> <span class="p">[</span><span class="s1">'jasmine'</span><span class="p">],</span>
+
+    <span class="c1">// list of files / patterns to load in the browser</span>
+    <span class="nx">files</span><span class="o">:</span> <span class="p">[</span>
+      <span class="s1">'vendor/assets/components/angular/angular.js'</span><span class="p">,</span>
+      <span class="s1">'vendor/assets/components/angular-resource/angular-resource.js'</span><span class="p">,</span> 
+      <span class="s1">'app/assets/javascripts/application.js'</span><span class="p">,</span> 
+      <span class="s1">'app/assets/javascripts/app.js'</span><span class="p">,</span> 
+      <span class="s1">'app/assets/javascripts/**/*.js'</span><span class="p">,</span>
+      <span class="s1">'spec/angular/*_spec.js'</span>   
+    <span class="p">],</span>
+
+    <span class="c1">// list of files to exclude</span>
+    <span class="nx">exclude</span><span class="o">:</span> <span class="p">[</span>
+
+    <span class="p">],</span>
+
+    <span class="c1">// test results reporter to use</span>
+    <span class="c1">// possible values: 'dots', 'progress', 'junit', 'growl', 'coverage'</span>
+    <span class="nx">reporters</span><span class="o">:</span> <span class="p">[</span><span class="s1">'progress'</span><span class="p">],</span>
+
+    <span class="c1">// web server port</span>
+    <span class="nx">port</span><span class="o">:</span> <span class="mi">9876</span><span class="p">,</span>
+
+    <span class="c1">// enable / disable colors in the output (reporters and logs)</span>
+    <span class="nx">colors</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// level of logging</span>
+    <span class="c1">// possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG</span>
+    <span class="nx">logLevel</span><span class="o">:</span> <span class="nx">config</span><span class="p">.</span><span class="nx">LOG_INFO</span><span class="p">,</span>
+
+    <span class="c1">// enable / disable watching file and executing tests whenever any file changes</span>
+    <span class="nx">autoWatch</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+
+    <span class="c1">// Start these browsers, currently available:</span>
+    <span class="c1">// - Chrome</span>
+    <span class="c1">// - ChromeCanary</span>
+    <span class="c1">// - Firefox</span>
+    <span class="c1">// - Opera (has to be installed with `npm install karma-opera-launcher`)</span>
+    <span class="c1">// - Safari (only Mac; has to be installed with `npm install karma-safari-launcher`)</span>
+    <span class="c1">// - PhantomJS</span>
+    <span class="c1">// - IE (only Windows; has to be installed with `npm install karma-ie-launcher`)</span>
+    <span class="c1">// browsers: ['Chrome', 'PhantomJS'],</span>
+    <span class="nx">browsers</span><span class="o">:</span> <span class="p">[</span><span class="s1">'PhantomJS'</span><span class="p">],</span>
+
+    <span class="c1">// If browser does not capture in given timeout [ms], kill it</span>
+    <span class="nx">captureTimeout</span><span class="o">:</span> <span class="mi">60000</span><span class="p">,</span>
+
+    <span class="c1">// Continuous Integration mode</span>
+    <span class="c1">// if true, it capture browsers, run tests and exit</span>
+    <span class="nx">singleRun</span><span class="o">:</span> <span class="kc">false</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+</pre></div>
+
+<h3>
+<a name="codeshipio" class="anchor" href="#codeshipio"><span class="octicon octicon-link"></span></a>Codeship.io</h3>
+
+<p>To build and test the application the settings for the following sections have to be adapted:</p>
+
+<h4>
+<a name="setup-commands" class="anchor" href="#setup-commands"><span class="octicon octicon-link"></span></a>Setup commands</h4>
+
+<div class="highlight highlight-bash"><pre>rvm use 2.0.0
+bundle install
+<span class="nb">export </span><span class="nv">RAILS_ENV</span><span class="o">=</span><span class="nb">test</span>
+bundle <span class="nb">exec </span>rake db:schema:load
+npm install 
+bower install
+</pre></div>
+
+<h4>
+<a name="test-commands" class="anchor" href="#test-commands"><span class="octicon octicon-link"></span></a>Test commands</h4>
+
+<p>The test commands for Codeship:</p>
+
+<div class="highlight highlight-bash"><pre>bundle <span class="nb">exec </span>rspec
+karma start --single-run
+</pre></div>
+
+<h2>
+<a name="build-status" class="anchor" href="#build-status"><span class="octicon octicon-link"></span></a>Build Status</h2>
+
+<p><a href="https://www.codeship.io/projects/8390"> <img src="https://www.codeship.io/projects/a4bfc1d0-1d1e-0131-6161-2e26d21abb16/status?branch=master" alt="Codeship Status for stiebitzhofer/rails-angular-bower-heroku"></a></p>
+
+<h2>
+<a name="resources-and-references" class="anchor" href="#resources-and-references"><span class="octicon octicon-link"></span></a>Resources and References</h2>
+
+<p><a href="https://github.com/qnyp/heroku-buildpack-ruby-bower">Heroku Buildpack for Ruby and Bower</a></p>
+
+<p><a href="https://gist.github.com/afeld/5704079">Gist by Aidan Feldman describing the basic steps</a></p>
+
+<p><a href="http://www.iconoclastlabs.com/blog/bower-and-rails-4">Matt Garrison on Bower and Rails 4</a></p>
+
+<p><a href="http://rails-angular-bower-heroku.herokuapp.com">http://rails-angular-bower-heroku.herokuapp.com</a></p>
+
+<p><a href="http://asanderson.org/posts/2013/06/03/bootstrapping-angular-rails-part-1.html">Bootstrapping an AngularJS app in Rails 4.0</a> is an excellent tutorial explaining in detail what I have done in this project.</p>
+
+<h2>
+<a name="todos" class="anchor" href="#todos"><span class="octicon octicon-link"></span></a>TODOs</h2>
+
+<p>Write some more useful tests.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/stiebitzhofer">stiebitzhofer</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
