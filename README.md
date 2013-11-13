@@ -256,7 +256,10 @@ karma start --single-run
 
 [Bootstrapping an AngularJS app in Rails 4.0] (http://asanderson.org/posts/2013/06/03/bootstrapping-angular-rails-part-1.html) is an excellent tutorial explaining in detail what I have done in this project.
 
+[Slides for Vienna.rb Meetup] (https://speakerdeck.com/stiebitzhofer/rails-angularjs-bower-heroku).
+
 ## TODOs ##
+Update to AngularJS 1.2.0.
 Write some more useful tests.
 
 
