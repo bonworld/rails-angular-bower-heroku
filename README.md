@@ -263,3 +263,7 @@ Update to AngularJS 1.2.0.
 Write some more useful tests.
 
 
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/stiebitzhofer/rails-angular-bower-heroku/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
