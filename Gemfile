@@ -29,3 +29,4 @@ gem 'jbuilder', '~> 1.2'
 gem 'puma'
 # Required for font path of Bootstrap
 gem 'rack-rewrite'
+gem 'ngmin-rails'
