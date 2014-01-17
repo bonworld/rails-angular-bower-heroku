@@ -1,6 +1,6 @@
 'use strict';
 
-var RabhApp = angular.module('RabhApp', ['ngResource']);
+var RabhApp = angular.module('RabhApp', ['ngResource', 'ngRoute']);
 
 RabhApp.config(['$routeProvider', function($routeProvider) {
     $routeProvider.

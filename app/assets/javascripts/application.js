@@ -12,6 +12,7 @@
 //
 //= require angular
 //= require angular-resource
+//= require angular-route
 //= require jquery
 //= require bootstrap/dist/js/bootstrap
 //= require_tree .
