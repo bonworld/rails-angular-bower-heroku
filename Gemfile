@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
-ruby '2.1.0'
+ruby '2.2.2'
 
 group :development, :test  do
-  gem 'pry'
-  gem 'pry-debugger'
+  gem 'byebug'
   gem 'rspec-rails'
 end
 
@@ -17,10 +16,10 @@ group :production, :staging do
   gem 'rails_12factor'
 end
 
-gem 'rails', '4.0.2'
+gem 'rails', '4.2.3'
 gem 'pg'
 gem 'haml'
-gem 'sass-rails', '~> 4.0.1'
+gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'turbolinks'
@@ -29,4 +28,3 @@ gem 'jbuilder', '~> 1.2'
 gem 'puma'
 # Required for font path of Bootstrap
 gem 'rack-rewrite'
-gem 'ngmin-rails'
