@@ -5,5 +5,3 @@ RabhApp.factory('PostModel',
   		return $resource('/posts/:post_id', {post_id:'@id'});
   	}
 );
-
-// Lets add a comment for testing purposes.
