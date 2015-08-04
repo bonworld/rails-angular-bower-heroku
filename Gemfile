@@ -14,6 +14,7 @@ group :production, :staging do
   # Compression of JavaScript and Stylesheets on Heroku
   gem 'heroku_rails_deflate'
   gem 'rails_12factor'
+  gem 'ngannotate-rails'
 end
 
 gem 'rails', '4.2.3'
