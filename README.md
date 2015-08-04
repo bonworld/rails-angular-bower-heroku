@@ -33,7 +33,7 @@ npm install bower
 bower install angular
 bower install angular-resource
 bower install bootstrap
-```	
+```
 
 #### Create bower.json ####
 
@@ -41,7 +41,7 @@ bower install bootstrap
 bower init
 ```
 
-The script will ask you some questions and using the existing packages to create the bower.json file. Alternatively the bower.json can be written manually and the packages installed by 
+The script will ask you some questions and using the existing packages to create the bower.json file. Alternatively the bower.json can be written manually and the packages installed by
 
 ```bash
 bower install
@@ -100,7 +100,7 @@ group :production, :staging do
   gem 'heroku_rails_deflate'
   gem 'rails_12factor'
 end
-```	
+```
 
 ## Issues with Bootstrap ##
 
@@ -137,7 +137,7 @@ To automate the installation of Bower and all other components a package.json is
 }
 ```
 
-Install everything now with 
+Install everything now with
 
 ```bash
 npm install
@@ -165,16 +165,16 @@ module.exports = function(config) {
     // list of files / patterns to load in the browser
     files: [
       'vendor/assets/components/angular/angular.js',
-      'vendor/assets/components/angular-resource/angular-resource.js', 
-      'app/assets/javascripts/application.js', 
-      'app/assets/javascripts/app.js', 
+      'vendor/assets/components/angular-resource/angular-resource.js',
+      'app/assets/javascripts/application.js',
+      'app/assets/javascripts/app.js',
       'app/assets/javascripts/**/*.js',
-      'spec/angular/*_spec.js'   
+      'spec/angular/*_spec.js'
     ],
 
     // list of files to exclude
     exclude: [
-      
+
     ],
 
     // test results reporter to use
@@ -222,11 +222,11 @@ To build and test the application the settings for the following sections have t
 #### Setup commands ####
 
 ```bash
-rvm use 2.0.0
+rvm use 2.2.2
 bundle install
 export RAILS_ENV=test
 bundle exec rake db:schema:load
-npm install 
+npm install
 bower install
 ```
 
@@ -266,4 +266,3 @@ Write some more useful tests.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/stiebitzhofer/rails-angular-bower-heroku/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
