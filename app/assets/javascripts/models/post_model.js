@@ -1,7 +1,9 @@
 'use strict';
 
-RabhApp.factory('PostModel', 
+RabhApp.factory('PostModel',
 	function($resource) {
   		return $resource('/posts/:post_id', {post_id:'@id'});
   	}
 );
+
+// Lets add a comment for testing purposes.
